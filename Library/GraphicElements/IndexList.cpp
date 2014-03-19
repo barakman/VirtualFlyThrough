@@ -52,7 +52,8 @@ void IndexList::Create()
 
 void IndexList::Insert(int iIndex)
 {
-	for (int i=0; i<Size(); i++)
+	int i;
+	for (i=0; i<Size(); i++)
 	{
 		int iTemp=Get(i);
 		if (m_aPoints[iIndex]->m_fY<m_aPoints[iTemp]->m_fY)

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D63B6F79-4197-4B3B-B1D6-1499B4BD393A}</ProjectGuid>
+    <RootNamespace>VirtualFlyThrough</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_MBCS;_CRT_SECURE_NO_WARNINGS;GLUT_BUILDING_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glu32.lib;glui32.lib;glut32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_MBCS;_CRT_SECURE_NO_WARNINGS;GLUT_BUILDING_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glu32.lib;glui32.lib;glut32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Library\GenericClasses\Device.cpp" />
+    <ClCompile Include="Library\GenericClasses\List.cpp" />
+    <ClCompile Include="Library\GraphicElements\IndexList.cpp" />
+    <ClCompile Include="Library\GraphicElements\InterList.cpp" />
+    <ClCompile Include="Library\GraphicElements\Point.cpp" />
+    <ClCompile Include="Library\GraphicElements\Polygon.cpp" />
+    <ClCompile Include="Library\GraphicElements\Polyhedron.cpp" />
+    <ClCompile Include="Library\GraphicManagers\RenderMngr.cpp" />
+    <ClCompile Include="Library\GraphicManagers\TranslateMngr.cpp" />
+    <ClCompile Include="Library\VirtualFlyThrough.cpp" />
+    <ClCompile Include="LibUser\GenericUtilities\Directory.cpp" />
+    <ClCompile Include="LibUser\GraphicHandlers\GluiMenu.cpp" />
+    <ClCompile Include="LibUser\GraphicHandlers\GlutDevice.cpp" />
+    <ClCompile Include="LibUser\MainInterface.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library\GenericClasses\Device.h" />
+    <ClInclude Include="Library\GenericClasses\List.h" />
+    <ClInclude Include="Library\GraphicElements\IndexList.h" />
+    <ClInclude Include="Library\GraphicElements\InterList.h" />
+    <ClInclude Include="Library\GraphicElements\Point.h" />
+    <ClInclude Include="Library\GraphicElements\Polygon.h" />
+    <ClInclude Include="Library\GraphicElements\Polyhedron.h" />
+    <ClInclude Include="Library\GraphicManagers\RenderMngr.h" />
+    <ClInclude Include="Library\GraphicManagers\TranslateMngr.h" />
+    <ClInclude Include="Library\VirtualFlyThrough.h" />
+    <ClInclude Include="LibUser\GenericUtilities\Directory.h" />
+    <ClInclude Include="LibUser\GraphicHandlers\GluiMenu.h" />
+    <ClInclude Include="LibUser\GraphicHandlers\GlutDevice.h" />
+    <ClInclude Include="LibUser\MainInterface.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LibUser\GraphicInputFiles\1701.plg" />
+    <None Include="LibUser\GraphicInputFiles\Asteroid.plg" />
+    <None Include="LibUser\GraphicInputFiles\Cube.plg" />
+    <None Include="LibUser\GraphicInputFiles\Diamond.plg" />
+    <None Include="LibUser\GraphicInputFiles\Dyna.plg" />
+    <None Include="LibUser\GraphicInputFiles\Glass1.plg" />
+    <None Include="LibUser\GraphicInputFiles\Intro.plg" />
+    <None Include="LibUser\GraphicInputFiles\Oct2Stel.plg" />
+    <None Include="LibUser\GraphicInputFiles\Pyramid.plg" />
+    <None Include="LibUser\GraphicInputFiles\Scene.plg" />
+    <None Include="LibUser\GraphicInputFiles\Shuttle.plg" />
+    <None Include="LibUser\GraphicInputFiles\Star.plg" />
+    <None Include="LibUser\GraphicInputFiles\Tank.plg" />
+    <None Include="LibUser\GraphicInputFiles\Two.plg" />
+    <None Include="LibUser\GraphicInputFiles\Vase.plg" />
+    <None Include="LibUser\GraphicInputFiles\Warbird.plg" />
+    <None Include="LibUser\GraphicInputFiles\X29A.plg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

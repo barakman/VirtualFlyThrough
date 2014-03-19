@@ -51,7 +51,8 @@ void InterList::Update(double fY,List<int>* pIndexList)
 
 void InterList::Insert(const Inter& sInter)
 {
-	for (int i=0; i<Size(); i++)
+	int i;
+	for (i=0; i<Size(); i++)
 	{
 		Inter sTemp=Get(i);
 		if (sInter.m_fCurrX<sTemp.m_fCurrX || (sInter.m_fCurrX==sTemp.m_fCurrX && sInter.m_fSlope<sTemp.m_fSlope))

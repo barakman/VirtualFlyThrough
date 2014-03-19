@@ -1,5 +1,5 @@
 #include "VirtualFlyThrough.h"
-#include <fstream.h>
+#include <stdio.h>
 
 
 VirtualFlyThrough::VirtualFlyThrough()
@@ -26,45 +26,38 @@ VirtualFlyThrough::~VirtualFlyThrough()
 
 void VirtualFlyThrough::AddToScene(const char* aFile)
 {
-	ifstream cFile(aFile);
+	FILE* pFile=fopen(aFile,"rt");
 
 	int iNumOfPolyhedrons=0;
-	cFile>>iNumOfPolyhedrons;
+	fscanf(pFile,"%d",&iNumOfPolyhedrons);
 
 	for (int iPolyhedronNum=0; iPolyhedronNum<iNumOfPolyhedrons; iPolyhedronNum++)
 	{
 		char aName[100]={0};
-		cFile>>aName;
-		int iNumOfPoints=0;
-		cFile>>iNumOfPoints;
-		int iNumOfPolygons=0;
-		cFile>>iNumOfPolygons;
+		int  iNumOfPoints=0;
+		int  iNumOfPolygons=0;
+		fscanf(pFile,"%s%d%d",aName,&iNumOfPoints,&iNumOfPolygons);
 		Polyhedron* pPolyhedron=new Polyhedron(aName,iNumOfPoints);
 
 		for (int iPointNum=0; iPointNum<iNumOfPoints; iPointNum++)
 		{
 			Point cPoint;
-			cFile>>cPoint.m_fX;
-			cFile>>cPoint.m_fY;
-			cFile>>cPoint.m_fZ;
+			fscanf(pFile,"%lf%lf%lf",&cPoint.m_fX,&cPoint.m_fY,&cPoint.m_fZ);
 			pPolyhedron->Add(cPoint,iPointNum);
 		}
 
 		for (int iPolygonNum=0; iPolygonNum<iNumOfPolygons; iPolygonNum++)
 		{
 			int iColor=0;
-			cFile>>iColor;
 			int iNumOfIndices=0;
-			cFile>>iNumOfIndices;
+			fscanf(pFile,"%x%d",&iColor,&iNumOfIndices);
 			Polygon* pPolygon=new Polygon(iColor,iNumOfIndices);
 
 			for (int iIndexNum=0; iIndexNum<iNumOfIndices; iIndexNum++)
 			{
 				int iIndex=0;
-				cFile>>iIndex;
-				Point* pPoint;
-				pPoint=pPolyhedron->Get(iIndex);
-				pPolygon->Add(pPoint,iIndexNum);
+				fscanf(pFile,"%d",&iIndex);
+				pPolygon->Add(pPolyhedron->Get(iIndex),iIndexNum);
 			}
 
 			m_pPolygonList->Add(pPolygon,0);
@@ -72,6 +65,8 @@ void VirtualFlyThrough::AddToScene(const char* aFile)
 
 		m_pPolyhedronList->Add(pPolyhedron,0);
 	}
+
+	fclose(pFile);
 }
 
 

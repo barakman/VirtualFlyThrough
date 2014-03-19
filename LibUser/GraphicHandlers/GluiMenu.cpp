@@ -187,8 +187,9 @@ void GluiMenu::InsertDirectory()
 		#define ITEM_SIZE 16
 		char aItem[ITEM_SIZE];
 
+		int j;
 		char* aFileName=m_cDirectory.GetFileName(i);
-		for (int j=0; j<ITEM_SIZE-2 && aFileName[j]!=0; j++)
+		for (j=0; j<ITEM_SIZE-2 && aFileName[j]!=0; j++)
 			aItem[j]=aFileName[j];
 
 		if (m_cDirectory.FileIsSubDir(i)==true)
