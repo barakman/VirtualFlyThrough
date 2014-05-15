@@ -52,7 +52,7 @@ char* Directory::GetFileName(int iId) const
 
 void Directory::Open()
 {
-    int iHandle;
+	int iHandle;
 	struct _finddata_t sFile;
 
 	iHandle=_findfirst("*.*",&sFile);
